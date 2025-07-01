@@ -321,8 +321,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] **Version Control** - Workflow versioning and rollback
 - [ ] **Performance Analytics** - Detailed execution analytics
 
----
 
-**Made with ❤️ by the FlowBuilder team**
-
-_Star ⭐ this repo if you find it useful!_

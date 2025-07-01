@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * MyMobiPOS Theme - Mozambican Colors
+   * Red, Green, and Gold inspired by Mozambique flag
+   */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 2 91% 44%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 142 50% 36%;
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 45 93% 47%;
+    --accent-foreground: 222.2 84% 4.9%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 2 91% 44%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 2 91% 44%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 2 91% 44%;
+
+    /* POS specific colors */
+    --pos-success: 142 50% 36%;
+    --pos-warning: 45 93% 47%;
+    --pos-danger: 2 91% 44%;
+    --pos-cash: 142 50% 36%;
+    --pos-card: 213 89% 52%;
+    --pos-mobile: 45 93% 47%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 2 91% 44%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 142 50% 36%;
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 45 93% 47%;
+    --accent-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 2 91% 44%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 2 91% 44%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 2 91% 44%;
+
+    /* Dark mode POS colors */
+    --pos-success: 142 50% 36%;
+    --pos-warning: 45 93% 47%;
+    --pos-danger: 2 91% 44%;
+    --pos-cash: 142 50% 36%;
+    --pos-card: 213 89% 52%;
+    --pos-mobile: 45 93% 47%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* POS specific styles */
+.pos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.pos-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.pos-receipt {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.pos-button-cash {
+  background-color: hsl(var(--pos-cash));
+  color: white;
+}
+
+.pos-button-card {
+  background-color: hsl(var(--pos-card));
+  color: white;
+}
+
+.pos-button-mobile {
+  background-color: hsl(var(--pos-mobile));
+  color: white;
+}
+
+/* Print styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .pos-receipt,
+  .pos-receipt * {
+    visibility: visible;
+  }
+
+  .pos-receipt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+/* Animation for cash register */
+@keyframes cash-register {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cash-register-animation {
+  animation: cash-register 0.3s ease-in-out;
+}
